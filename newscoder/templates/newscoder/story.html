@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+</head>
+
+<body>
+<a href="/newscoder/logout">Logot</a>
+<h1>Code Stories</h1>
+
+{%if error%}
+<div style="color: red; background-color: #ffc0c0; border: 1px solid red;
+  padding: 3px; font-weight: bold;">
+  You moron, hit a button and code the story
+</div>  
+{% endif%}
+
+<span style = "color: red">{{username}}</span>, please code this story:
+
+<div style="border: 1px solid black; margin: 12px; padding: 6px; ">
+  <h3>{{story_title}}</h3>
+  {{story_text|linebreaks}}
+</div>
+<br/>
+
+<!-- need to pass story_id to post--, method POST is called in view.py -->
+
+<form action = "/newscoder/postdb" method="POST">
+<input type="hidden" name="story_id" value="{{story_id}}" />
+{% csrf_token %}
+
+<label><input type="radio" name="eleccode" value="1" />Election-related</label>
+<br/>
+<label><input type="radio" name="eleccode" value="0" />NOT election-related</label>
+<br/>
+<label><input type="radio" name="eleccode" value="-1" />Indeterminate</label>
+
+<p>
+<input type="submit" value="Submit"/>
+</p>
+
+</form>
+
+
+
+</body> </html>
