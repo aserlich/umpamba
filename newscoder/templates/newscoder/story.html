@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<a href="/newscoder/logout">Logot</a>
+<a href="/newscoder/logout?next=/newscoder">Logout</a>
 <h1>Code Stories</h1>
 
 {%if error%}
@@ -14,7 +14,14 @@
 </div>  
 {% endif%}
 
+<div>
+YOU HAVE CODED {{ coder_count }} stories out of {{ selected_count}} to
+code!!
+</div>
+
+<div>
 <span style = "color: red">{{username}}</span>, please code this story:
+</div>
 
 <div style="border: 1px solid black; margin: 12px; padding: 6px; ">
   <h3>{{story_title}}</h3>

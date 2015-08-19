@@ -4,14 +4,25 @@
 </head>
 
 <body>
-<h1>Правда нет</h1>
+<h1>Login</h1>
 
-Правда нет
+<p>
+Please login using your <b>username</b> and <b>password</b>
+</p>
 
-Dobre den. The plums are {{plum_color}} and the story is {{story_title}}
+If you any problems email aaron AT gmail
 
+<form action = "/newscoder/login/" method="POST">
+{% csrf_token %}
+<input type ="hidden" name = "next" value = "/newscoder/story/" />
+<p>
+Username: <input type ="text" name = "username"/>
+</p>
+<p>
+Password: <input type ="password" name = "password"/>
+</p>
+<input type ="submit" value="Log In"/>
+</form>
+</body>
 
-<hr>
-<address></address>
-<!-- hhmts start -->Last modified: Wed Aug 12 00:08:34 PDT 2015 <!-- hhmts end -->
-</body> </html>
+</html>
