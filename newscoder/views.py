@@ -20,18 +20,22 @@ def index(request):
 def login_view(request):
     username = request.POST['username']
     password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            return redirect('story', story_id = "", error="False")
-            
+    try:
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect('story', story_id = "", error="False")
+                
+            else:
+                # Return a 'disabled account' error message
+                ...
+
         else:
-            # Return a 'disabled account' error message
+            print("You didn't enter your password HIT the dang back button and try again")
             ...
-    else:
-        # Return an 'invalid login' error message.
-        ...
+    except:
+        print("You didn't enter your password HIT the dang back button and try again")
 
 def story(request, story_id = None, error="False"):
     story = None
